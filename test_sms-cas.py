@@ -9,7 +9,7 @@ from kafka import KafkaProducer
 from threading import Timer, local
 from datetime import datetime
 from collections import defaultdict
-from SMS-CAS import omi
+from SMS\-CAS import omi
 
 app = omi.app
 
