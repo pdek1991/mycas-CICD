@@ -102,12 +102,13 @@ def generate_osm():
     expiry = request.json['expiry']
     topic = 'topic_mycas' 
     emmtype = '44'
-    message = f'{device_id}:{message_id}:{message_text}:{emmtype}:{expiry}'
+    #message = f'{device_id}:{message_id}:{message_text}:{emmtype}:{expiry}'
     try:
         producer.send(topic, message.encode('utf-8')).get()
         logger.info(f"Message sent to Kafka topic {topic}: {message}")
     except KafkaError as e:
-        logger.error(f"Failed to send message to Kafka: {e}")
+        #logger.error(f"Failed to send message to Kafka: {e}")
+        print(e)
     # Acquire a connection from the pool
     connection = connection_pool.get_connection()
 
@@ -117,7 +118,7 @@ def generate_osm():
     data = (message_id, message_text, device_id, expiry)
     cursor.execute(insert_query, data)
     connection.commit()
-    logger.info((f"message_id: %s, message_text: %s, device_id: %s, expiry: %s" %(message_id, message_text, device_id, expiry)))
+    #logger.info((f"message_id: %s, message_text: %s, device_id: %s, expiry: %s" %(message_id, message_text, device_id, expiry)))
     # Release the connection back to the pool
     cursor.close()
     connection.close()
@@ -142,14 +143,15 @@ def add_entitlement():
     for package_id in package_ids:
         data = (device_id, package_id, expiry)
         cursor.execute(insert_query, data)
-        message = f'{device_id}:{package_id}:{emmtype}:{expiry}'
+        #message = f'{device_id}:{package_id}:{emmtype}:{expiry}'
         try:
             producer.send(topic, message.encode('utf-8')).get()
-            logger.info(f"Message sent to Kafka topic {topic}:{message}:{expiry}")
+           #logger.info(f"Message sent to Kafka topic {topic}:{message}:{expiry}")
         except KafkaError as e:
-            logger.error(f"Failed to send message to Kafka: {e}")
+            print(e)
+            #logger.error(f"Failed to send message to Kafka: {e}")
     connection.commit()
-    logger.info((f"device_id: %s, package_id: %s, expiry: %s" %(device_id, package_id, expiry)))
+    #logger.info((f"device_id: %s, package_id: %s, expiry: %s" %(device_id, package_id, expiry)))
     # Release the connection back to the pool
     cursor.close()
     connection.close()
@@ -165,12 +167,13 @@ def device_keys():
     topic = 'topic_mycas'  
     emmtype = '10'
     expiry = '2037-12-31'
-    message = f'{device_id}:{bskeys}:{emmtype}:{expiry}'
+    #message = f'{device_id}:{bskeys}:{emmtype}:{expiry}'
     try:
         producer.send(topic, message.encode('utf-8')).get()
-        logger.info(f"Message sent to Kafka topic {topic}: {message}")
+        #logger.info(f"Message sent to Kafka topic {topic}: {message}")
     except KafkaError as e:
-        logger.error(f"Failed to send message to Kafka: {e}")
+        print(e)
+        #logger.error(f"Failed to send message to Kafka: {e}")
     # Acquire a connection from the pool
     connection = connection_pool.get_connection()
 
@@ -180,7 +183,7 @@ def device_keys():
     data = (device_id, bskeys)
     cursor.execute(insert_query, data)
     connection.commit()
-    logger.info((f"device_id: %s bskeys: %s " %(device_id,bskeys)))
+    #logger.info((f"device_id: %s bskeys: %s " %(device_id,bskeys)))
     #logger.INFO('device_id: %s, bskeys: %s', device_id, bskeys)
     # Release the connection back to the pool
     cursor.close()
