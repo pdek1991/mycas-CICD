@@ -1,7 +1,7 @@
 import unittest
 import importlib.util
 
-spec = importlib.util.spec_from_file_location('omi', r'C:\Users\Prashant\Desktop\CAS\DOCKER\mycas-CICD\SMS-CAS\omi.py')
+spec = importlib.util.spec_from_file_location('omi', r'root/mycas/mycas-CICD/SMS-CAS/omi.py')
 omi = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(omi)
 
