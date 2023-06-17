@@ -105,7 +105,7 @@ def generate_osm():
     #message = f'{device_id}:{message_id}:{message_text}:{emmtype}:{expiry}'
     try:
         producer.send(topic, message.encode('utf-8')).get()
-        logger.info(f"Message sent to Kafka topic {topic}: {message}")
+        #logger.info(f"Message sent to Kafka topic {topic}: {message}")
     except KafkaError as e:
         #logger.error(f"Failed to send message to Kafka: {e}")
         print(e)
