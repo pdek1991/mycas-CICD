@@ -9,7 +9,9 @@ from kafka import KafkaProducer
 from threading import Timer, local
 from datetime import datetime
 from collections import defaultdict
-from SMS-CAS/omi.py import app
+from SMS-CAS import omi
+
+app = omi.app
 
 #spec = importlib.util.spec_from_file_location('omi', r'/root/mycas/mycas-CICD/SMS-CAS/omi.py')
 #omi = importlib.util.module_from_spec(spec)
