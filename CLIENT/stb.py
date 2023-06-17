@@ -7,7 +7,7 @@ import time
 #import tkinter as tk
 from prometheus_client import CollectorRegistry, Gauge, push_to_gateway
 from prometheus_client import push_to_gateway
-
+import os
 # Define the multicast group and port
 multicast_group = '224.1.1.1'
 port = 5000
