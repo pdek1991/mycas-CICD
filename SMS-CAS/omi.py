@@ -191,4 +191,4 @@ def device_keys():
 if __name__ == '__main__':
     #app.run()
     Timer(30, update_rps).start()
-    app.run(port='5000')
+    app.run(host='0.0.0.0', port='5000')

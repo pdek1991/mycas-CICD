@@ -8,7 +8,7 @@ app = Flask(__name__)
 class FlaskServerTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.base_url = 'http://127.0.0.1:5000'  # Replace with your app's URL
+        cls.base_url = 'http://192.168.56.102:5000'  # Replace with your app's URL
         # Start your Flask app in a separate process or thread here
 
     def _send_request_with_retry(self, method, url, retries=3, timeout=5, **kwargs):
