@@ -9,3 +9,4 @@ VOLUME ["/root/mycas/CLIENT"]
 
 COPY . .
 CMD ["python", "stb_client.py"]
+
