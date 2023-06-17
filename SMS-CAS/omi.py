@@ -68,8 +68,8 @@ logging.basicConfig(format='%(asctime)s.%(msecs)03d %(levelname)-8s %(message)s'
                         handlers=[TimedRotatingFileHandler(filename=r'./Logs/mycas.txt', backupCount=10, when='midnight', interval=1)])
 logger = logging.getLogger(__name__)
 
-flask_logger = logging.getLogger('werkzeug')
-flask_logger.setLevel(logging.ERROR)
+#flask_logger = logging.getLogger('werkzeug')
+#flask_logger.setLevel(logging.ERROR)
 
 internal_logger = logging.getLogger('werkzeug._internal')
 internal_logger.setLevel(logging.ERROR)
@@ -86,6 +86,12 @@ db_config = {
 }
 
 connection_pool = mysql.connector.pooling.MySQLConnectionPool(pool_name="my_pool", pool_size=10, **db_config)
+@app.route('/', methods=['GET'])
+def root():
+    return 'Server is running', 200
+
+
+
 @app.route('/generate_osm', methods=['POST'])
 def generate_osm():
     global osm_count
@@ -185,4 +191,4 @@ def device_keys():
 if __name__ == '__main__':
     #app.run()
     Timer(30, update_rps).start()
-    app.run(host='0.0.0.0', port='5000')
+    app.run(port='5000')
