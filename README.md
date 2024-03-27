@@ -20,7 +20,7 @@ used for encryption and removing rows from the database for which expiry
 has passed.
 
 Interface/API Definitions
-The SMS-CAS Interface exposes the following REST API endpoints:
+The SMS-CAS Interface exposes the following REST API endpoints
 ● /generateosm: This endpoint generates an EMM for a given device.
 ● /adddevice: This endpoint adds a device to the system.
 ● /addentitlement: This endpoint adds an entitlement to a device.
