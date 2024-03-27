@@ -18,7 +18,7 @@ data being carouselled.
 ● Scheduler: This microservice runs fixed tasks, such as changing keys
 used for encryption and removing rows from the database for which expiry
 has passed.
-test
+
 Interface/API Definitions
 The SMS-CAS Interface exposes the following REST API endpoints:
 ● /generateosm: This endpoint generates an EMM for a given device.
