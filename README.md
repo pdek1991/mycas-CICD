@@ -27,4 +27,4 @@ The SMS-CAS Interface exposes the following REST API endpoints:
 ● /removedevice: This endpoint removes a device from the system.
 ● /removeentitlement: This endpoint removes an entitlement from a
 device.
-● /removedevice: This endpoint removes a device from the system
+● /removedevice: This endpoint removes a device from the system.
